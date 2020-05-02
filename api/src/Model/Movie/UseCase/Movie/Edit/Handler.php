@@ -34,7 +34,7 @@ class Handler
 
     public function handle(Command $command): void
     {
-        $movie = $this->movieRepository->get(new Id($command->id));
+        $movie = $this->movieRepository->get(new Id($command->getId()));
 
         try {
             $genre = $this->genreRepository->get($command->genre);

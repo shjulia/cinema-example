@@ -19,7 +19,11 @@ class ScheduleFetcher
         $this->connection = $connection;
     }
 
-    public function findSchedule(int $weekNumber)
+    /**
+     * @param int $weekNumber
+     * @return array
+     */
+    public function findSchedule(int $weekNumber): array
     {
         $schedulesQuery = $this->connection->createQueryBuilder()
             ->select('*')

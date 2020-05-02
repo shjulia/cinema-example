@@ -46,4 +46,12 @@ class Movie
         $this->title = $title;
         $this->genre = $genre;
     }
+
+    /**
+     * @return Id
+     */
+    public function getId(): Id
+    {
+        return $this->id;
+    }
 }

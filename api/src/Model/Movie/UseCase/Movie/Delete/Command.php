@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Model\Movie\UseCase\Movie\Delete;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 class Command
 {
     /**
@@ -11,4 +13,9 @@ class Command
      * @Assert\Uuid()
      */
     public string $id;
+
+    public function __construct(string $id)
+    {
+        $this->id = $id;
+    }
 }
