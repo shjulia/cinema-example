@@ -31,6 +31,8 @@ services:
           dockerfile: php-fpm.docker
         volumes:
             - ./api:/var/www/api
+        depends_on:
+            - api-postgres
     api-php-cli:
         build:
             context: ./api/docker
@@ -38,4 +40,19 @@ services:
         volumes:
             - ./api:/var/www/api
         working_dir: /var/www/api
+        depends_on:
+          - api-postgres
         tty: true
+    api-postgres:
+        image: postgres:11.2-alpine
+        volumes:
+            - api-postgres:/var/lib/postgresql/data
+        environment:
+            POSTGRES_USER: app
+            POSTGRES_PASSWORD: secret
+            POSTGRES_DB: app
+        ports:
+            - "54321:5432"
+
+volumes:
+    api-postgres:

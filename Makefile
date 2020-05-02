@@ -22,3 +22,14 @@ api-composer:
 
 test:
 	docker-compose exec api-php-cli composer test
+
+
+migrations-generate:
+	docker-compose run --rm api-php-cli php bin/console doctrine:migrations:diff
+
+migrations-migrate:
+	docker-compose run --rm api-php-cli php bin/console doctrine:migrations:migrate --no-interaction
+
+
+fixtures:
+	docker-compose run --rm api-php-cli php bin/console doctrine:fixtures:load --no-interaction
